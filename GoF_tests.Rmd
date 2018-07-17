@@ -1,0 +1,66 @@
+---
+title: "GoF tests"
+author: "Alex Baecher"
+date: "August 16, 2017"
+output: html_document
+---
+
+```{r, packages}
+library(AICcmodavg)
+```
+
+```{r, occu GoF tests}
+#system.time(GoF_richmondi_occu  <-mb.gof.test(p_TOD_psi_CAN_ASP_ELV_MST_VEG_TPI_RAD_richmondi_occu, nsim=10000, plot.hist=T))
+#system.time(GoF_glutinosus_occu <-mb.gof.test(p_CWD_psi_MST_VEG_glutinosus_occu,                    nsim=10000, plot.hist=T))
+#system.time(GoF_kentucki_occu   <-mb.gof.test(p_CWD_psi_CAN_ASP_ELV_MST_VEG_TPI_RAD_kentucki_occu,  nsim=10000, plot.hist=T))
+
+# richmondi
+GoF_richmondi_occu$chi.square #chi square
+GoF_richmondi_occu$c.hat.est # c-hat
+GoF_richmondi_occu$p.value # p-value
+# glutinosus
+GoF_glutinosus_occu$chi.square #chi square
+GoF_glutinosus_occu$c.hat.est # c-hat
+GoF_glutinosus_occu$p.value # p-value
+# kentucki
+GoF_kentucki_occu$chi.square #chi square
+GoF_kentucki_occu$c.hat.est # c-hat
+GoF_kentucki_occu$p.value # p-value
+```
+
+
+```{r, pcount GoF tests}
+#system.time(GoF_richmondi_pcount <-Nmix.gof.test(p_TOD_lam_CAN_MST_ELV_ASP_VEG_TPI_RAD_richmondi,  nsim=10000, plot.hist=T ))
+system.time(GoF_glutinosus_pcount<-Nmix.gof.test(p_TOD_lam_CAN_MST_ASP_ELV_P_glutinosus_pcount,    nsim=1000, plot.hist=T ))
+#system.time(GoF_kentucki_pcount  <-Nmix.gof.test(p_CWD_lam_CAN_MST_ASP_ELV_VEG_TPI_RAD_P_kentucki_pcount, nsim=10000, plot.hist=T))
+
+# richmondi
+hist(GoF_richmondi_pcount$t.star)
+GoF_richmondi_pcount$chi.square #chi square
+GoF_richmondi_pcount$c.hat.est # c-hat
+GoF_richmondi_pcount$p.value # p-value
+# glutinosus
+GoF_glutinosus_pcount$chi.square #chi square
+GoF_glutinosus_pcount$c.hat.est # c-hat
+GoF_glutinosus_pcount$p.value # p-value
+
+#ZIP
+#> GoF_glutinosus_pcount$chi.square #chi square
+#[1] 103.8191
+#> GoF_glutinosus_pcount$c.hat.est # c-hat
+#[1] 1.357063
+#> GoF_glutinosus_pcount$p.value # p-value
+#[1] 0.226
+#NB
+#> GoF_glutinosus_pcount$chi.square #chi square
+#[1] 104.5499
+#> GoF_glutinosus_pcount$c.hat.est # c-hat
+#[1] 1.38015
+#> GoF_glutinosus_pcount$p.value # p-value
+#[1] 0.231
+
+# kentucki
+GoF_kentucki_pcount$chi.square #chi square
+GoF_kentucki_pcount$c.hat.est # c-hat
+GoF_kentucki_pcount$p.value # p-value
+```
